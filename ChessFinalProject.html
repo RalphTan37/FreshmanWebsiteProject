@@ -1,0 +1,163 @@
+<!--HTML Settings-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="chess1.css">
+</head>
+<body>
+
+<!--Top Navigation bar-->
+  <div class="topnav">
+    <a class="active" href="Chess Final Project.html">Home</a>
+    <a href="beginner.html">Beginner</a>
+    <a href="intermediate.html">Intermediate</a>
+    <a href="advanced.html">Advanced</a>
+    <a href="resources.html">Resources</a>
+    <a href="whychess.html">Why Chess?</a>
+    <a href="chessquiz.html">Chess Quiz</a>
+  </div>
+
+<!-- Header -->
+<header class="container themeColor padding" id="myHeader">
+  <div class="center">
+  <h4>NATIONAL MASTER RALPH TAN</h4>
+  <h1 class="xxxlarge">WELCOME!</h1>
+    <div class="padding32">
+      <button class="theButton xlarge darkGrey hoverLightGrey" onclick="document.getElementById('id01').style.display='block'" style="font-weight: 900;">ABOUT RALPH TAN</button>
+    </div>
+  </div>
+</header>
+
+<!-- Modal -->
+<div id="id01" class="modal">
+    <div class="modalContent card4 animateTop">
+      <header class="container color1"> 
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="button displayTopRight">×</span>
+        <h4><center>National Master Ralph Tan</center></h4>
+      </header>
+      <div class="padding">
+        <center><img src="ralph tan.jpg" alt="Photo of Ralph Tan"></center>
+        <p>
+          Ralph Tan is currently a student at Saint Louis University (Class of '26).
+          Majoring in Computer Science. 
+          Double Minioring in Finance & Engineering Math.
+          Filipino-American, born in the United Arab Emirates, Abu Dhabi, and raised in Cleveland, Ohio.
+          Ralph is a Shaker Heights Alumni.
+          Ralph learned how to play chess at the age of 8 and played numerous tournaments since then.
+          Ralph Tan has achieved the title National Master awarded by the United States Chess Federation.
+          Ralph is currently on the road to chase after the Grandmaster title.
+        </p>
+      </div>
+      <footer class="container color1">
+        <a href="http://www.uschess.org/msa/MbrDtlMain.php?15223857" target="_blank"><center>USCF(United States Chess Federation) Profile</center></a>
+        <a href="https://ratings.fide.com/profile/30966590" target="_blank"><center>FIDE(Fédération Internationale des Échecs) Profile</center></a>
+      </footer>
+    </div>
+</div>
+
+<!--Captions-->
+<h2 class="center"><strong>Learn Chess Effectively & Efficiently!</strong></h2>
+<h4 class="center">Choose Your Skill Level!</h4>
+
+<!--Beginner Summary-->
+<div class="rowPadding center marginTop">
+<div class="third">
+  <div class="card container" style="min-height: 460px">
+  <h2><strong><a href="beginner.html">Beginner</a></strong></h2>
+  <br>
+  <img src="pawn.PNG" alt="Chess Pawn" width="101px" height="140px">
+  <i class="marginBottom textColorTheme" style="font-size: 120px"></i>
+  <p><strong>Understand the Basics of Chess</strong></p>
+  <p>The Chessboard</p>
+  <p>Chess Pieces Mobility</p>
+  <p>Special Rules & Moves</p>
+  </div>
+</div>
+
+<!--Intermediate Summary-->
+<div class="third">
+  <div class="card container" style="min-height: 460px">
+  <h2><strong><a href="intermediate.html">Intermediate</a></strong></h2>
+  <br>
+  <img src="knight.PNG" alt="Chess Knight" width="101px" height="140px">
+  <i class="marginBottom textColorTheme" style="font-size: 120px"></i>
+  <p><strong>Understand the Fundamentals of Chess</strong></p>
+  <p>Chess Principles</p>
+  <p>Tactics</p>
+  <p>Strategies</p>
+  </div>
+</div>
+
+<!--Advanced Summary-->
+<div class="third">
+  <div class="card container" style="min-height:460px">
+  <h2><strong><a href="advanced.html">Advanced</a></strong></h2>
+  <br>
+  <img src="rook.PNG" alt="Chess Rook" width="101px" height="140px">
+  <i class="marginBottom textColorTheme" style="font-size: 120px"></i>
+  <p><strong>Understand the Complexity of Chess</strong></p>
+  <p>More Strategies & Tactics</p>
+  <p>Middlegame</p>
+  <p>Endgame</p>
+  </div>
+</div>
+</div>
+
+<hr>
+
+<!--Email Subscription-->
+<div class="rowPadding">
+  <div class="card white">
+    <ul class="unorderedList borderTop">
+        <h2><center><strong>Join the Subscription List!</strong></center></h2>
+        <div>
+        <center>
+          <form name="submit-to-google-sheet">
+            <input type="email" name="Email" placeholder="Your Email Address" required>
+            <button type="submit"><img src="envelope.png" width="30px"></button>
+          </form>
+        </center>
+        <span id="message" class="center"></span>
+        <p class="center">Be informed of Updates, Upcoming Tournaments, and Chess News!</p>
+        </div>
+        <br>        
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<!-- Home Footer -->
+<footer class="container darkTheme">
+  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+  </a>
+  <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</footer>
+
+<!--JavaScript for Email Subscription-->
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwJ8F5Kcy7b0qV7zQdAykvPw484ZcYmv2M7SdL-dMOAV4bdsHC4g98tYD8DEkNep-AJ/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const message = document.getElementById("message")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        message.innerHTML = "Thank You For Subscribing & Have a Wonderful Day!"
+        setTimeout(function(){
+        message.innerHTML = ""
+        },3000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+</body>
+</html>

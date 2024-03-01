@@ -1,0 +1,214 @@
+<!--HTML Settings-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chess Quiz</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="chess1.css">
+</head>
+<body>
+
+<!--Top Navigation bar-->
+  <div class="topnav">
+    <a class="active" href="ChessFinalProject.html">Home</a>
+    <a href="beginner.html">Beginner</a>
+    <a href="intermediate.html">Intermediate</a>
+    <a href="advanced.html">Advanced</a>
+    <a href="resources.html">Resources</a>
+    <a href="whychess.html">Why Chess?</a>
+    <a href="chessquiz.html">Chess Quiz</a>
+  </div>
+
+<!-- Chess Quiz Title-->
+<div class="rowPadding">
+    <div class="card green">
+      <ul class="unorderedList borderTop">
+          <h1><center><strong>Chess Quiz</strong></center></h1>
+          <h3><center>Score at least 70% to Pass!</center></h3>
+        </ul>
+    </div>
+  </div>
+
+<!--Quiz-->
+<div id="quiz" class="center"></div>
+<center><button id = "submit">Show Me My Score!</button></center>
+<div id="results" class="center"></div>
+
+<!-- Chess Quiz Footer -->
+<footer class="container darkTheme">
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+      <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+    </a>
+    <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+  </footer>
+
+<!--Quiz JavaScript-->
+<script>
+var chessQuestions = [
+  {
+    question: "1. What is it called when a piece attacks 2 or more pieces at the same time?",
+    answers: {
+      A: 'Fork' + '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: 'Pin'+ '&nbsp' + '&nbsp'+ '&nbsp',
+      
+      C: 'Skewer'
+    },
+    correctAnswer: 'A'
+  },
+  {
+    question: "2. What is the 2nd stage of Chess called?",
+    answers: {
+      A: 'Opening'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: 'Middlegame'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      C: 'Endgame'
+    },
+    correctAnswer: 'B'
+  },
+  {
+    question: "3. What is the only piece that can jump over other pieces?",
+    answers: {
+      A: 'Bishop'+ '&nbsp' + '&nbsp'+ '&nbsp',
+      
+      B: 'Rook'+ '&nbsp' + '&nbsp'+ '&nbsp',
+      
+      C: 'Knight'
+    },
+    correctAnswer: 'C'
+  },
+  {
+    question: "4. How many different types of chess pieces are there?",
+    answers: {
+      A: '5'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: '6'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      C: '7'
+    },
+    correctAnswer: 'B'
+},
+  {
+    question: "5. What is a Check?",
+    answers: {
+      A: 'A Move that attacks the King'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: 'When you write money on a paper'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      C: 'Symbol you mark a box'
+    },
+    correctAnswer: 'A'
+},
+{
+    question: "6. How many Square make up the Chessboard?",
+    answers: {
+      A: 'Like 90?'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: '64'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      C: 'At least 10'
+    },
+    correctAnswer: 'B'
+},
+{
+    question: "7. What are the vertical lines on a chessboard called?",
+    answers: {
+      A: 'Clippers'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: 'y-axis'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      C: 'Files'
+    },
+    correctAnswer: 'C'
+},
+{
+    question: "8. What are the horizontal lines on a chessboard called?",
+    answers: {
+      A: 'x-axis'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: 'Ranks'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      C: 'Planks'
+    },
+    correctAnswer: 'B'
+},
+{
+    question: "9. What is the only piece that captures differently than how it normally moves?",
+    answers: {
+      A: 'Knight'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: 'King'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      C: 'Pawn'
+    },
+    correctAnswer: 'C'
+},
+{question: "10. Who is the best Chess Player in the World?",
+    answers: {
+      A: 'Magnus Carlsen'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      B: 'Ralph Tan'+ '&nbsp' + '&nbsp'+ '&nbsp',
+
+      C: 'Alireza Firouzja'
+    },
+    correctAnswer: 'B'
+}
+];
+
+var chessQuizContainer = document.getElementById('quiz');
+var chessResultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+generateQuiz(chessQuestions, chessQuizContainer, chessResultsContainer, submitButton);
+
+function generateQuiz(questions, chessQuizContainer, chessResultsContainer, submitButton){
+  function showQuestions(questions, chessQuizContainer){
+    var output = [];
+    var answers;
+    for(var i=0; i < questions.length; i++){
+      answers = [];
+      for(letter in questions[i].answers){
+        answers.push(
+          '<label>'+ '<input type="radio" name="question'+ i +'" value="'+ letter +'">' + letter + ': ' + questions[i].answers[letter]+ '</label>'
+        );
+      }
+      output.push(
+        '<div class="question">' + questions[i].question + '</div>' + '<div class="answers">' + answers.join('') + '</div>'
+      );
+    }
+    chessQuizContainer.innerHTML = output.join('');
+  }
+
+  function showResults(questions, chessQuizContainer, chessResultsContainer){
+    var answerContainers = chessQuizContainer.querySelectorAll('.answers');
+    var userAnswer = '';
+    var numCorrect = 0;
+    for(var i=0; i<questions.length; i++){
+      userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+      if(userAnswer===questions[i].correctAnswer){
+        numCorrect++;
+        answerContainers[i].style.color = 'lightgreen';
+      }
+      else{
+        answerContainers[i].style.color = 'red';
+      }
+    }
+    chessResultsContainer.innerHTML = numCorrect/questions.length * 100
+        if (numCorrect/questions.length * 100 >= 70)
+            chessResultsContainer.innerHTML = 'You Scored '+ numCorrect/questions.length * 100 + '%! ' + 'You Passed!'
+            else 
+                chessResultsContainer.innerHTML = 'You Scored '+ numCorrect/questions.length * 100 + '%! ' + 'You Failed! Try Again!'
+  }
+
+  showQuestions(questions, chessQuizContainer);
+  
+  submitButton.onclick = function(){
+    showResults(questions, chessQuizContainer, chessResultsContainer);
+  }
+}
+</script>
+
+</body>
+</html>
